@@ -1,0 +1,16 @@
+# dune exec ./mainFile.exe
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/sps2026/.cache/dune/db
+# Workspace root: /home/sps2026/CMSC631/ProgrammingLang/CMSC631-Final-Project
+# Auto-detected concurrency: 8
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /home/sps2026/.opam/4.10.0/bin/ocamlc.opt -config > /tmp/dune_4c4af9_output

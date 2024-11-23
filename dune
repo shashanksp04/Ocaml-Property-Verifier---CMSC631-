@@ -1,0 +1,6 @@
+(dirs ("lib" "bin"))
+
+(env
+ (dev
+  (flags
+   (:standard -w -66-32-33-39-34-37))))
