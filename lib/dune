@@ -1,8 +1,8 @@
 (library
- (name Example_sample)
- (modules example_sample))  ; Declare the library with the module
+ (name Example)
+ (modules example))  ; Declare the library with the module
 
 (executable
  (name mainFile)
- (libraries core Example_sample core_unix qcheck)
+ (libraries core Example core_unix qcheck)
  (modules setup required driver files cmd mainFile))  ; List only the main executable module here

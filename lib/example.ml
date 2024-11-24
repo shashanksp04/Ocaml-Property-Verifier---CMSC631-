@@ -15,3 +15,4 @@ let mirror_property_test (t:tree) =
 
 let is_symmetric (t:tree) = 
     t = mirror_tree(t)
+;;
