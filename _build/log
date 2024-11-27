@@ -13,4 +13,4 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /home/sps2026/.opam/4.10.0/bin/ocamlc.opt -config > /tmp/dune_4c4af9_output
+$ /home/sps2026/.opam/my-switch/bin/ocamlc.opt -config > /tmp/dune_b25a2f_output

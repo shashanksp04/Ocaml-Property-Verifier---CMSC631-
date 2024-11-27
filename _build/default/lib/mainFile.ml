@@ -6,7 +6,7 @@ open Core
 open QCheck
 open Driver
 open Required
-open Example_sample  (* Import the Example_sample module *)
+open Example  (* Import the Example_sample module *)
 
 (* Sample trees for testing *)
 let sample_tree =
@@ -30,25 +30,25 @@ let () =
   setup_add_library "core";  (* Add core for the property tests *)
 
   (* Add tree tests *)
-  setup_add_type "TreeModule" "tree" ["Leaf"; "Node"];
-  setup_add_function "TreeModule" "mirror_property_test";
-  setup_add_function "TreeModule" "is_symmetric";
+  setup_add_type "Example" "tree" ["Leaf"; "Node"];
+  setup_add_function "Example" "mirror_property_test";
+  setup_add_function "Example" "is_symmetric";
 
   (* Define Coq file to extract OCaml code *)
   setup := {
     !setup with
-    ml_file = "example_sample.ml"; (* Name of this OCaml file *)
+    ml_file = "example.ml"; (* Name of this OCaml file *)
     temp_dir = "../_build";     (* Temporary directory for intermediate files *)
     target = "mirror_property_test"; (* Set target property test *)
   };
 
-  (* Run the property tests *)
+  (* Run the property tests
   let result1 = mirror_property_test sample_tree in
-  let result2 = is_symmetric sample_tree in
+  let result2 = is_symmetric sample_tree in *)
 
   (* Output the results of the tests *)
-  Printf.printf "Mirror property test result: %b\n" result1;
-  Printf.printf "Is symmetric property test result: %b\n" result2;
+  (* Printf.printf "Mirror property test result: %b\n" result1;
+  Printf.printf "Is symmetric property test result: %b\n" result2; *)
 
   (* Run QuickChick testing *)
   quickchick ()

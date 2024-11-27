@@ -1,0 +1,29 @@
+DIGEST 2509286f30cb8bbed029342331b88fd6
+FExample_withQuickchick
+R31:40 QuickChick.QuickChick <> <> lib
+R89:94 Coq.ZArith.ZArith <> <> lib
+def 108:110 <> int
+R115:115 Coq.Numbers.BinNums <> Z ind
+ind 129:132 <> tree
+constr 145:148 <> Leaf
+constr 166:169 <> Node
+R155:158 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R152:154 Coq.Init.Datatypes <> nat ind
+R159:162 Example_withQuickchick <> tree:1 ind
+R177:180 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R173:176 Example_withQuickchick <> tree:1 ind
+R184:187 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R181:183 Coq.Init.Datatypes <> nat ind
+R192:195 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R188:191 Example_withQuickchick <> tree:1 ind
+R196:199 Example_withQuickchick <> tree:1 ind
+ax 208:227 <> mirror_property_test
+R235:238 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R231:234 Example_withQuickchick <> tree ind
+R239:242 Coq.Init.Datatypes <> bool ind
+ax 251:262 <> is_symmetric
+R270:273 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R266:269 Example_withQuickchick <> tree ind
+R274:277 Coq.Init.Datatypes <> bool ind
+R463:466 Example_withQuickchick <> tree ind
+R544:563 Example_withQuickchick <> mirror_property_test prfax

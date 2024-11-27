@@ -11,6 +11,6 @@ let run_coq_of_ocaml infile outfile =
   |> ignore
 
 let run_coqc dir coqfile =
-  run_command (Printf.sprintf "cd %s; coqc %s  -w \"-all\"" dir coqfile)
+  run_command (Printf.sprintf "cd %s; coqc -w none %s" dir coqfile)
 
 

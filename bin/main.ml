@@ -1,6 +1,3 @@
-open Quickchick_ocaml
-open Core
-
 let () = ()
   (* let setup = Required.({
     extractions = [
