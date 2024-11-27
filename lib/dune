@@ -4,5 +4,5 @@
 
 (executable
  (name mainFile)
- (libraries core Example core_unix qcheck)
+ (libraries core re str Example core_unix qcheck)
  (modules setup required driver files cmd mainFile))  ; List only the main executable module here

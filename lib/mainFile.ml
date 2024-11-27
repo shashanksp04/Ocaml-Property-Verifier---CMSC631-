@@ -42,13 +42,13 @@ let () =
     target = "mirror_property_test"; (* Set target property test *)
   };
 
-  (* Run the property tests *)
+  (* Run the property tests
   let result1 = mirror_property_test sample_tree in
-  let result2 = is_symmetric sample_tree in
+  let result2 = is_symmetric sample_tree in *)
 
   (* Output the results of the tests *)
-  Printf.printf "Mirror property test result: %b\n" result1;
-  Printf.printf "Is symmetric property test result: %b\n" result2;
+  (* Printf.printf "Mirror property test result: %b\n" result1;
+  Printf.printf "Is symmetric property test result: %b\n" result2; *)
 
   (* Run QuickChick testing *)
   quickchick ()

@@ -1,5 +1,6 @@
 open Core
 open Poly
+open Re
 
 let find_time_elapsed (strings : string list) : float option =
   let starts_with_time_elapsed s = String.is_prefix s ~prefix:"Time Elapsed" in
@@ -71,12 +72,54 @@ let get_translated_function filename function_name =
   from_until ~filename
     ~prefix:(Printf.sprintf "Definition %s" function_name)
     ~suffix:"."
+      
+let parse_params params =
+  (* Split the parameters by ',' and process each *)
+  params
+  |> String.split ~on:','
+  |> List.map ~f:(fun param ->
+          match String.split param ~on:':' with
+          | [_; typ] -> String.strip typ
+          | _ -> failwith "Invalid parameter format.")
+  |> String.concat ~sep:" -> "
 
-let axiomatize decl =
-  let decl = String.substr_replace_all decl ~pattern:":=" ~with_:"." in
-  String.substr_replace_all decl ~pattern:"Definition" ~with_:"Axiom"
+let extract_signature decl function_name =
+  let decl = String.strip decl in
+  let prefix = Printf.sprintf "Definition %s" function_name in
+  match String.chop_prefix ~prefix decl with
+  | None -> Error "Input must start with 'Definition'."
+  | Some remaining ->
+      let regex = Re.Pcre.re "\\s*\\(([^)]+)\\)\\s*:\\s*(\\w+)\\s*:=" in
+      match Re.exec_opt (Re.compile regex) remaining with
+      | Some groups ->
+          let params = Re.Group.get groups 1 |> String.strip in
+          let return_type = Re.Group.get groups 2 |> String.strip in
+          (* Printf.printf "Params %s" params;
+          Printf.printf "Return %s" return_type; *)
+          Ok(function_name, params, return_type)
+      | None ->
+          Error "Failed to match the expected function signature pattern."
+
+let axiomatize decl function_name =
+  match extract_signature decl function_name with
+  | Ok (name, params, return_type) ->
+      let param_type = if params = "" then "" else parse_params params in
+      if param_type = "" then
+        Printf.sprintf "Axiom %s : %s." name return_type
+      else
+        Printf.sprintf "Axiom %s : %s -> %s." name param_type return_type
+  | Error msg -> failwith msg
 
 let get_axiomatized_function filename function_name =
+  let content = In_channel.read_lines filename in
+  let decls =
+    content
+    |> List.filter ~f:(fun decl -> String.is_prefix decl ~prefix:(Printf.sprintf "Definition %s" function_name))  (* Filter only lines matching the function_name *)
+    |> List.map ~f:(fun decl -> axiomatize decl function_name)  (* Apply axiomatization to filtered declarations *)
+  in
+  decls
+
+(* let get_axiomatized_function filename function_name =
   [
     get_translated_function filename function_name |> List.hd_exn |> axiomatize;
-  ]
+  ] *)
