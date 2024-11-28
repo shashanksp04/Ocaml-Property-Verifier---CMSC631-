@@ -8,36 +8,53 @@ This repository is dedicated to building a property-based testing framework for 
 
 Given an OCaml file which serve as our starting program, we parse the file to see the input types of the target property test. If the input types are non-primitives or user-defined types, then we parse the OCaml file to get their type definitions and convert these type definitions to Coq using the coq-of-ocaml library. These coq type definitions are then used to create a Coq script which uses QuickChick to perform testing and verify if the given properties hold or not.
 
-## Installation Process
+## Installation
 
-The Project works with the Coq Proof Assistant, version 8.13.2 compiled with OCaml 4.13.1. Further it uses the coq-of-ocaml library primarily. In addition, it also requires core, core_unix, and qcheck libraries which have to be installed manually.
+The project requires the following tools and libraries:
 
-To start with the installation process, we'll use opam - the OCaml Package Manager.
-```
+- **Coq Proof Assistant** (version 8.13.2)
+- **OCaml** (version 4.13.1)
+- **coq-of-ocaml** library
+- Additional OCaml libraries: `core`, `core_unix`, and `qcheck`
+
+### Step 1: Install OPAM
+Install the OCaml package manager, OPAM, and initialize it:
+```bash
 sudo apt update
 sudo apt install opam
 opam init
 eval $(opam env)
 ```
-Once done with this setup, now we'll create a new environment using the "switch-create". This is done so that you can work on different versions of OCaml simultaneously by switching environments. Kindly note "4.13.1" is the ocaml version and "OcamlVerifier" is the name of our switch. You can also see it by doing "opam switch list"
-```
+
+### Step 2: Create a Custom OPAM Switch
+Set up a custom environment for OCaml 4.13.1 to avoid conflicts with other projects:
+```bash
 opam switch create OcamlVerifier 4.13.1
 opam switch OcamlVerifier
 eval $(opam env)
 ```
-Now we're done setting up are switch and we just need to install the various libraries
-```
+
+### Step 3: Install Dependencies
+Install the required libraries:
+```bash
 opam install coq
 opam install qcheck
 opam install core_unix
 ```
-With this we're done with the installation process. As a check run "coqc --version" on terminal. It should show you the respective versions of coq and ocaml.
 
-
-## How to Run the Program
-
-Before running the program, make sure you're in the "lib" directory and your dune file looks the code shown below.
+Verify the installation by running:
+```bash
+coqc --version
 ```
+You should see the Coq and OCaml versions as specified.
+
+---
+
+## Usage
+
+### Step 1: Configure the Dune File
+Ensure the `dune` file in the `lib` directory contains the following configuration:
+```lisp
 (library
  (name Example)
  (modules example))
@@ -47,25 +64,46 @@ Before running the program, make sure you're in the "lib" directory and your dun
  (libraries core re str Example core_unix qcheck)
  (modules setup required driver files cmd mainFile)) 
 ```
-Once done with the first step, you should run the following command on the terminal. This will create a temporary directory called "_build" in your root directory.
-```
+
+### Step 2: Build the Project
+Run the following command to build the project. This creates a `_build` directory:
+```bash
 dune build
 ```
-Now you need to create a holder ".v" file in the "_build" directory called "Example.v". The name of the file is case senstitive. Additionally, this file doesn't need to have any content before hand. Now you need to run the following command. 
-```
+
+### Step 3: Create a Placeholder File
+In the `_build` directory, create an empty `.v` file named `Example.v`. This serves as a placeholder for the generated Coq script.
+
+### Step 4: Execute the Program
+Run the main executable to generate the Coq script:
+```bash
 dune exec ./mainFile.exe
 ```
-If the above two commands are successful you won't see any errors. Now with this we're done compiling our program. An "Example_withQuickChick.v" will be created in the "_build" directory. This is our coq script. To run this file we use "coq".
-```
+
+If successful, the script `Example_withQuickChick.v` will be generated in the `_build` directory.
+
+### Step 5: Test with Coq
+Run the generated Coq script using:
+```bash
 coqc -w none ../_build/Example_withQuickChick.v
 ```
-Now if you want to test another sample code, you need to copy the code into the "example.ml" file in the "lib" directory and accordingly change the code of the mainFile.ml. Don't change the names of the file otherwise the code won't run. 
 
-Remember you always need to be in the "lib" directory otherwise the path of some commands would've to changed accordingly. Additionally, if you want to completely restart the compilation you should run the following command. This removes all the compiled files including the "_build" directory. Therefore to run the program again, you'll have to start from the "dune build" step again
-```
+### Testing with a New Example
+1. Replace the content of `example.ml` in the `lib` directory with your new OCaml code.  
+2. Update `mainFile.ml` as needed to accommodate the new example.  
+3. Rebuild the project:
+   ```bash
+   dune build
+   ```
+4. Reuse the placeholder `Example.v` file and proceed as before.
+
+### Clean Compilation
+To start fresh and remove all compiled files:
+```bash
 dune clean
 ```
-If you're just testing a different example then you can just do "dune build" and can reuse the Example.v file.    
+
+You will need to rebuild the project starting from `dune build`.  
 
 
 ## Contributing
