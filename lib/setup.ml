@@ -1,4 +1,5 @@
-(* Global setup functions *)
+(* Global setup functions, this file helps us setup our functions which allows us to let the program which properties 
+and input files we're focusing on *)
 
 let setup =
   ref

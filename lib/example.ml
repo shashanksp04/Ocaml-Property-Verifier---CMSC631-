@@ -1,3 +1,5 @@
+(* Our sample ocaml file on which we perform QuickChick testing *)
+
 type tree = 
     Leaf of int
     | Node of tree * int * tree

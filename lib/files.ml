@@ -1,3 +1,4 @@
+(* The main part of our ocaml parser which helpes us convert our initial coq code into our final coq script completely *)
 open Core
 open Poly
 open Re
@@ -73,8 +74,8 @@ let get_translated_function filename function_name =
     ~prefix:(Printf.sprintf "Definition %s" function_name)
     ~suffix:"."
       
+(* extracting the parameter type *)
 let parse_params params =
-  (* Split the parameters by ',' and process each *)
   params
   |> String.split ~on:','
   |> List.map ~f:(fun param ->
@@ -83,6 +84,7 @@ let parse_params params =
           | _ -> failwith "Invalid parameter format.")
   |> String.concat ~sep:" -> "
 
+ (* extracting the parameter type and return type from the function prototype*) 
 let extract_signature decl function_name =
   let decl = String.strip decl in
   let prefix = Printf.sprintf "Definition %s" function_name in
@@ -100,6 +102,7 @@ let extract_signature decl function_name =
       | None ->
           Error "Failed to match the expected function signature pattern."
 
+(* Creating our axioms for the properties *)
 let axiomatize decl function_name =
   match extract_signature decl function_name with
   | Ok (name, params, return_type) ->
@@ -110,6 +113,7 @@ let axiomatize decl function_name =
         Printf.sprintf "Axiom %s : %s -> %s." name param_type return_type
   | Error msg -> failwith msg
 
+(* Filtering out the properties which are added and creating the equivalent axioms for them *)
 let get_axiomatized_function filename function_name =
   let content = In_channel.read_lines filename in
   let decls =
@@ -118,8 +122,3 @@ let get_axiomatized_function filename function_name =
     |> List.map ~f:(fun decl -> axiomatize decl function_name)  (* Apply axiomatization to filtered declarations *)
   in
   decls
-
-(* let get_axiomatized_function filename function_name =
-  [
-    get_translated_function filename function_name |> List.hd_exn |> axiomatize;
-  ] *)
