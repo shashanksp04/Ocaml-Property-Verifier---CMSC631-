@@ -1,34 +1,35 @@
-# Quickchick_ocaml
+# OCaml to Coq Converter and QuickChick Tester
 
-Test your OCaml code via translation into Coq with the power of Coq inductives and QuickChick. 
+## Acknowledgement
 
-Say you want to test this function, defined in `prop.ml`:
-```ocaml
-type bar =
-  | A
-  | B of int
+This section is dedicated to acknowledging the original author of the codebase.
 
-let foo (l : bar) : bool =
-  match l with
-  | B 1 -> false
-  | _ -> true
-```
+## Installation Process
 
-QuickChick will find the counterexample, `B 1`. The setup for this is fairly simple:
+Details on how to install the necessary dependencies and set up the environment.
 
-```ocaml
-let () =
-  set_path "<path to folder with .ml files>";
-  set_file "prop.ml";
-  add_type "Prop" "bar" ["A"; "B"];
-  set_function "Prop" "foo";
-  ()
+## Logic
 
-let main () =
-  match quickchick () with
-  | Some f -> Core.Printf.printf "Found counterexample in %f seconds\n" f
-  | _ -> Core.Printf.printf "Error in Coq translation\n"
-```
+Description of the logic implemented in the program, focusing on the conversion of OCaml files to Coq and the QuickChick testing process.
 
-Currently working on a deriver to automatically generate this setup code, which can be found [here](https://github.com/nikhil-kamath/ppx_quickchick_ocaml).
+## How to Run the Program
 
+Instructions on how to run the program and any relevant commands.
+
+## Project Description
+
+This project is a refactored and improved version of a program that converts OCaml files into Coq and performs QuickChick testing. The original codebase was messy and non-functional. The main logic has been re-implemented, and the entire codebase has been refactored to ensure proper functionality.
+
+## Features
+
+- Conversion of OCaml files to Coq
+- QuickChick testing implementation
+- Improved code structure and readability
+
+## Contributing
+
+Instructions for how to contribute to the project, if applicable.
+
+## License
+
+Information about the project's license.
