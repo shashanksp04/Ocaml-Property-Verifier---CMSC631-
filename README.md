@@ -2,7 +2,7 @@
 
 ## Acknowledgement
 
-This section is dedicated to acknowledging the original author of the codebase.
+We would like to express our sincere gratitude to [Nikhil Kamath] for their invaluable contributions, which served as the foundation for the development of our version of this Ocaml Program Verifier Project. Their original work provided critical insights, enabling us to build upon and adapt their ideas to suit our specific goals. We deeply appreciate their efforts, which have significantly shaped the direction and success of our endeavor.
 
 ## Installation Process
 
