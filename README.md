@@ -54,7 +54,7 @@ You should see the Coq and OCaml versions as specified.
 
 ---
 
-## Usage
+## Running the program
 
 ### Step 1: Configure the Dune File
 Ensure the `dune` file in the `lib` directory contains the following configuration:
@@ -108,6 +108,8 @@ dune clean
 ```
 
 You will need to rebuild the project starting from `dune build`.  
+
+You can also watch the first 3 minutes of this [tutorial video]() for help.
 
 ---
 
