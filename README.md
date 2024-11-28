@@ -109,7 +109,7 @@ dune clean
 
 You will need to rebuild the project starting from `dune build`.  
 
-You can also watch the first 3 minutes of this [tutorial video]() for help.
+You can also watch the first 3 minutes of this [tutorial video](https://github.com/user-attachments/assets/8a68dcaf-b870-421b-a096-a716146bcbff) for help.
 
 ---
 
