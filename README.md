@@ -1,8 +1,12 @@
-# OCaml to Coq Converter and QuickChick Tester
+# Ocaml Property Verifier 
 
-## Acknowledgement
+## Project Description
 
-We would like to express our sincere gratitude to [Nikhil Kamath](https://github.com/nikhil-kamath/quickchick_ocaml) for their invaluable contributions, which served as the foundation for the development of our version of this Ocaml Program Verifier Project. Their original work provided critical insights, enabling us to build upon and adapt their ideas to suit our specific goals. We deeply appreciate their efforts, which have significantly shaped the direction and success of our endeavor.
+This repository is dedicated to building a property-based testing framework for OCaml programs using QuickChick, a powerful testing library for Coq. The project aims to ensure that OCaml programs adhere to their executable specifications by defining properties that the programs must satisfy. A custom tool is developed to leverage QuickChick’s ability to generate extensive random inputs and execute them against the defined properties. The tool evaluates whether all tests pass or identifies counterexamples that violate the properties, enabling developers to detect and address potential issues efficiently. This project is a refactored and improved version of a program that converts OCaml file into Coq and builds on that to perform QuickChick testing. The original codebase was messy and non-functional. The main logic has been re-implemented, and the entire codebase has been refactored to ensure proper functionality.
+
+## Logic
+
+Given an OCaml file which serve as our starting program, we parse the file to see the input types of the target property test. If the input types are non-primitives or user-defined types, then we parse the OCaml file to get their type definitions and convert these type definitions to Coq using the coq-of-ocaml library. These coq type definitions are then used to create a Coq script which uses QuickChick to perform testing and verify if the given properties hold or not.
 
 ## Installation Process
 
@@ -29,9 +33,6 @@ opam install core_unix
 ```
 With this we're done with the installation process. As a check run "coqc --version" on terminal. It should show you the respective versions of coq and ocaml.
 
-## Logic
-
-Given an OCaml file which serve as our starting program, we parse the file to see the input types of the target property test. If the input types are non-primitives or user-defined types, then we parse the OCaml file to get their type definitions and convert these type definitions to Coq using the coq-of-ocaml library. These coq type definitions are then used to create a Coq script which uses QuickChick to perform testing and verify if the given properties hold or not.
 
 ## How to Run the Program
 
@@ -58,7 +59,7 @@ If the above two commands are successful you won't see any errors. Now with this
 ```
 coqc -w none ../_build/Example_withQuickChick.v
 ```
-Now if you want to test another sample code, you need to copy the code into the "example.ml" file in the "lib" file and accordingly change the code of the mainFile.ml. Don't change the names of the file otherwise the code won't run. 
+Now if you want to test another sample code, you need to copy the code into the "example.ml" file in the "lib" directory and accordingly change the code of the mainFile.ml. Don't change the names of the file otherwise the code won't run. 
 
 Remember you always need to be in the "lib" directory otherwise the path of some commands would've to changed accordingly. Additionally, if you want to completely restart the compilation you should run the following command. This removes all the compiled files including the "_build" directory. Therefore to run the program again, you'll have to start from the "dune build" step again
 ```
@@ -66,19 +67,15 @@ dune clean
 ```
 If you're just testing a different example then you can just do "dune build" and can reuse the Example.v file.    
 
-## Project Description
-
-This project is a refactored and improved version of a program that converts OCaml file into Coq and performs QuickChick testing. The original codebase was messy and non-functional. The main logic has been re-implemented, and the entire codebase has been refactored to ensure proper functionality.
-
-## Features
-
-- Conversion of OCaml files to Coq
-- QuickChick testing implementation
-- Improved code structure and readability
 
 ## Contributing
 
 Instructions for how to contribute to the project, if applicable.
+
+## Acknowledgement
+
+We would like to express our sincere gratitude to [Nikhil Kamath](https://github.com/nikhil-kamath/quickchick_ocaml) for their invaluable contributions, which served as the foundation for the development of our version of this Ocaml Program Verifier Project. Their original work provided critical insights, enabling us to build upon and adapt their ideas to suit our specific goals. We deeply appreciate their efforts, which have significantly shaped the direction and success of our endeavor.
+
 
 ## License
 
