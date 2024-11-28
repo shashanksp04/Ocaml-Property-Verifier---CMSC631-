@@ -10,16 +10,16 @@ Given an OCaml file which serve as our starting program, we parse the file to se
 
 ## Installation Process
 
-The Project The Coq Proof Assistant, version 8.13.2 compiled with OCaml 4.13.1. Further it uses the coq-of-ocaml library primarily. In addition, it also uses core, core_unix, and qcheck which have to be installed manually.
+The Project works with the Coq Proof Assistant, version 8.13.2 compiled with OCaml 4.13.1. Further it uses the coq-of-ocaml library primarily. In addition, it also requires core, core_unix, and qcheck libraries which have to be installed manually.
 
-To start with the installation process, we'll use opam - the OCaml Package Manager. Kindly note the instructions below are for WSL/Ubuntu.
+To start with the installation process, we'll use opam - the OCaml Package Manager.
 ```
 sudo apt update
 sudo apt install opam
 opam init
 eval $(opam env)
 ```
-Once done with this setup, now we'll create a new environment using the "switch-create". This is done so that you can work on different versions of OCaml simulatneously by switching environments. Kindly note "4.13.1" is the ocaml version and "OcamlVerifier" is the name of our switch. You can also see it by doing "opam switch list"
+Once done with this setup, now we'll create a new environment using the "switch-create". This is done so that you can work on different versions of OCaml simultaneously by switching environments. Kindly note "4.13.1" is the ocaml version and "OcamlVerifier" is the name of our switch. You can also see it by doing "opam switch list"
 ```
 opam switch create OcamlVerifier 4.13.1
 opam switch OcamlVerifier
@@ -76,7 +76,10 @@ Instructions for how to contribute to the project, if applicable.
 
 We would like to express our sincere gratitude to [Nikhil Kamath](https://github.com/nikhil-kamath/quickchick_ocaml) for their invaluable contributions, which served as the foundation for the development of our version of this Ocaml Program Verifier Project. Their original work provided critical insights, enabling us to build upon and adapt their ideas to suit our specific goals. We deeply appreciate their efforts, which have significantly shaped the direction and success of our endeavor.
 
+## Contact
+
+For any questions or inquiries, please contact [Shashank](https://github.com/shashanksp04) and [Grace](https://github.com/gracek7689).
 
 ## License
 
-Information about the project's license.
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
