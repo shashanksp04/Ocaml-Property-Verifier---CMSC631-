@@ -10,7 +10,7 @@ Given an OCaml file which serve as our starting program, we parse the file to se
 
 ## Installation Process
 
-The Project The Coq Proof Assistant, version 8.13.2 compiled with OCaml 4.13.1. Further it uses the coq-of-ocaml library primarily. In addition it also uses core, core_unix, and qcheck which have to be installed manually.
+The Project The Coq Proof Assistant, version 8.13.2 compiled with OCaml 4.13.1. Further it uses the coq-of-ocaml library primarily. In addition, it also uses core, core_unix, and qcheck which have to be installed manually.
 
 To start with the installation process, we'll use opam - the OCaml Package Manager. Kindly note the instructions below are for WSL/Ubuntu.
 ```
