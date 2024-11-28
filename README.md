@@ -4,9 +4,13 @@
 
 This repository is dedicated to building a property-based testing framework for OCaml programs using QuickChick, a powerful testing library for Coq. The project aims to ensure that OCaml programs adhere to their executable specifications by defining properties that the programs must satisfy. A custom tool is developed to leverage QuickChick’s ability to generate extensive random inputs and execute them against the defined properties. The tool evaluates whether all tests pass or identifies counterexamples that violate the properties, enabling developers to detect and address potential issues efficiently. This project is a refactored and improved version of a program that converts OCaml file into Coq and builds on that to perform QuickChick testing. The original codebase was messy and non-functional. The main logic has been re-implemented, and the entire codebase has been refactored to ensure proper functionality.
 
+---
+
 ## Logic
 
 Given an OCaml file which serve as our starting program, we parse the file to see the input types of the target property test. If the input types are non-primitives or user-defined types, then we parse the OCaml file to get their type definitions and convert these type definitions to Coq using the coq-of-ocaml library. These coq type definitions are then used to create a Coq script which uses QuickChick to perform testing and verify if the given properties hold or not.
+
+---
 
 ## Installation
 
@@ -105,18 +109,25 @@ dune clean
 
 You will need to rebuild the project starting from `dune build`.  
 
+---
 
 ## Contributing
 
 Instructions for how to contribute to the project, if applicable.
 
+---
+
 ## Acknowledgement
 
 We would like to express our sincere gratitude to [Nikhil Kamath](https://github.com/nikhil-kamath/quickchick_ocaml) for their invaluable contributions, which served as the foundation for the development of our version of this Ocaml Program Verifier Project. Their original work provided critical insights, enabling us to build upon and adapt their ideas to suit our specific goals. We deeply appreciate their efforts, which have significantly shaped the direction and success of our endeavor.
 
+---
+
 ## Contact
 
 For any questions or inquiries, please contact [Shashank](https://github.com/shashanksp04) and [Grace](https://github.com/gracek7689).
+
+---
 
 ## License
 
