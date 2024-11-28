@@ -6,7 +6,17 @@ We would like to express our sincere gratitude to [Nikhil Kamath](https://github
 
 ## Installation Process
 
-Details on how to install the necessary dependencies and set up the environment.
+The Project The Coq Proof Assistant, version 8.13.2 compiled with OCaml 4.13.1. Further it uses the coq-of-ocaml library primarily. In addition it also uses core, core_unix, and qcheck which have to be installed manually.
+
+To start with the installation process, we'll use opam - the OCaml Package Manager. Kindly note the instructions below are for WSL/Ubuntu.
+```code
+sudo apt update
+sudo apt install opam
+opam init
+eval $(opam env)
+```
+Once done with this setup, now we'll create a new environment using the "switch-create". This is done so that you can work on different versions of OCaml simulatneously by switching environments
+
 
 ## Logic
 
