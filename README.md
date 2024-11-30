@@ -115,7 +115,7 @@ You can also watch the first 3 minutes of this [tutorial video](https://github.c
 
 ## Contributing
 
-Instructions for how to contribute to the project, if applicable.
+We welcome contributions to enhance the functionality and reliability of this project. Whether you want to add new features, improve existing ones, write or refine properties for OCaml programs, or optimize the QuickChick testing process, your input is valuable. To contribute, please fork the repository, create a feature branch, and submit a pull request with a clear description of your changes. Additionally, feel free to report issues, suggest enhancements, or share feedback!
 
 ---
 
